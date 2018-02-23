@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://mikailapages.com/article-ws" 
+targetNamespace="http://mikailapages.com/article-ws" elementFormDefault="qualified">
+
+<xs:element name="getArticleByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="articleId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getArticleByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="articleInfo" type="tns:articleInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="articleInfo">
+        <xs:sequence>
+            <xs:element name="articleId" type="xs:long"/>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="category" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="getAllArticlesRequest">
+        <xs:complexType/>
+    </xs:element>    
+    <xs:element name="getAllArticlesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="articleInfo" type="tns:articleInfo" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>   
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>     
+    <xs:element name="addArticleRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="title" type="xs:string"/>
+                <xs:element name="category" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addArticleResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>            
+                <xs:element name="articleInfo" type="tns:articleInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateArticleRequest">
+        <xs:complexType>
+            <xs:sequence>
+               <xs:element name="articleInfo" type="tns:articleInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateArticleResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteArticleRequest">
+        <xs:complexType>
+            <xs:sequence>
+               <xs:element name="articleId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteArticleResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>                   
+</xs:schema>
